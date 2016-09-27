@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Robot Wars</title>
+	<link rel="stylesheet" type="text/css" href="robot.css">
+	<script src= '../jquery-3.0.0.js'></script>
+
+
+</head>
+<body>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+ //Get Robot ontop of background
+ //have robot move around
+
+	 var robot = {
+	 	x: 5,
+	 	y: 5
+	 }
+
+	// function borderControl(){
+	// 	if(robot.x < 10){
+
+	// 	}
+	// }
+
+	 function displayRobot(){
+			document.getElementById("robot").style.top = robot.y*20+"px";
+			document.getElementById("robot").style.left = robot.x*20+"px";
+	}
+
+	document.onkeydown = function(e){
+		if(e.which ==37 && robot.x > 0){
+			robot.x --;
+		}
+		if(e.which ==39 && robot.x < 45){
+			robot.x ++;
+		}
+		if(e.which ==38 && robot.y > 1){
+			robot.y --;
+		}
+		else if(e.which ==40 && robot.y < 25){
+			robot.y ++;
+		}
+		displayRobot();
+		console.log(robot);
+	}
+
+})
+</script>
+
+
+<div id="container">
+	<div id="background">
+	</div>
+	<div id="robot">
+	</div>
+</div>
+
+</body>
+</html>

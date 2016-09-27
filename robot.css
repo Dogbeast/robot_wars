@@ -1,0 +1,31 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+div#container{
+	width: 980px;
+	height: 600px;
+	padding: 10px;
+	/*background-color: black;*/
+}
+
+div#background{
+	width: 970px;
+	height: 600px;
+	background: url(towerbackground.gif);
+	background-repeat: no-repeat;
+	background-size: 970px 600px;
+	transform: scaleX(-1);
+}
+div#robot{
+	width: 100px;
+	height: 100px;
+	background: url(robot.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
