@@ -29,3 +29,15 @@ div#robot{
 	top: 20px;
 	left: 20px;
 }
+div#enemy{
+	width: 50px;
+	height: 100px;
+	background: url(missile.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	transform: rotate(270deg);
+	top: 20px;
+	left: 880px;
+}

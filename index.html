@@ -17,11 +17,20 @@ $(document).ready(function(){
 	 	x: 1,
 	 	y: 1
 	 }
+	 var enemy = {
+	 	x: 44,
+	 	y: 1
+	 }
 
 	 function displayRobot(){
 			document.getElementById("robot").style.top = robot.y*20+"px";
 			document.getElementById("robot").style.left = robot.x*20+"px";
 	}
+	function displayEnemy(){
+		document.getElementById("enemy").style.top = enemy.y*20+"px";
+		document.getElementById("enemy").style.left = enemy.x*20+"px";
+	}
+	var myVar = setInterval(function(){ enemy.x = enemy.x -3; displayEnemy();}, 1000);
 
 	document.onkeydown = function(e){
 		if(e.which ==37 && robot.x > 0){
@@ -51,6 +60,8 @@ $(document).ready(function(){
 	<div id="background">
 	</div>
 	<div id="robot">
+	</div>
+	<div id="enemy">
 	</div>
 </div>
 
