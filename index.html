@@ -13,15 +13,16 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-	 var robot = {
+	var robot = {
 	 	x: 1,
 	 	y: 1
-	 }
-	 var enemy = {
+	}
+	var enemy = {
 	 	x: 44,
 	 	y: 1
-	 }
+	}
 
+	// DISPLAYS ELEMENTS
 	 function displayRobot(){
 			document.getElementById("robot").style.top = robot.y*20+"px";
 			document.getElementById("robot").style.left = robot.x*20+"px";
@@ -30,8 +31,47 @@ $(document).ready(function(){
 		document.getElementById("enemy").style.top = enemy.y*20+"px";
 		document.getElementById("enemy").style.left = enemy.x*20+"px";
 	}
-	var myVar = setInterval(function(){ enemy.x = enemy.x -3; displayEnemy();}, 1000);
+	function displayExplosion(){
+		document.getElementById("explosion").style.top = enemy.y*20-50+"px";
+		document.getElementById("explosion").style.left = enemy.x*20-100+"px";
+		document.getElementById("explosion").style.visibility = "visible";
+	}
 
+	function addMoreEnemies(){
+		document.getElementById("enemy").style.top = enemy.y*20+RANDOMNUM()+"px";
+		document.getElementById("enemy").style.left = enemy.x*20+"px";
+	}
+	function RANDOMNUM(){
+		var num = Math.floor(Math.random()*50);
+		return num;
+	}
+	// HIDES ELEMENTS
+	function hideRobot(){
+		document.getElementById("robot").style.visibility = "hidden";
+	}
+	function hideEnemy(){
+		document.getElementById("enemy").style.visibility = "hidden";
+	}
+	function hideExplosion(){
+		document.getElementById("explosion").style.visibility = "hidden";
+	}
+
+	// COLLISION DETECTION AND EXPLOSION SEQUENCER
+	var myVar = setInterval(function(){
+		enemy.x = enemy.x -3;
+		displayEnemy();
+		addMoreEnemies();
+		if (enemy.y == robot.y && enemy.x == robot.x || enemy.x-1 == robot.x || enemy.x-2 == robot.x || enemy.x-3 == robot.x || enemy.x-4 == robot.x){
+			displayExplosion();
+			hideRobot();
+			hideEnemy();
+			setTimeout(function(){
+				hideExplosion();
+			},1000);
+		}
+	}, 1000);
+
+	// MOVES ROBOT WHEN YOU PRESS ARROW KEYS
 	document.onkeydown = function(e){
 		if(e.which ==37 && robot.x > 0){
 			robot.x --;
@@ -46,7 +86,7 @@ $(document).ready(function(){
 			robot.y ++;
 		}
 		displayRobot();
-		console.log(robot);
+		// console.log(robot);
 	}
 
 	// GET ENEMIES TO APPEAR ON RIGHT SIDE AND MOVE LEFT
@@ -62,6 +102,8 @@ $(document).ready(function(){
 	<div id="robot">
 	</div>
 	<div id="enemy">
+	</div>
+	<div id="explosion">
 	</div>
 </div>
 

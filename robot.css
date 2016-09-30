@@ -41,3 +41,15 @@ div#enemy{
 	top: 20px;
 	left: 880px;
 }
+div#explosion{
+	width: 200px;
+	height: 200px;
+	background: url(explosion.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	visibility: hidden;
+	top: 20px;
+	left: 880px;
+}
